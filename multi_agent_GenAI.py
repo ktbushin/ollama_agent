@@ -5,9 +5,12 @@ import math
 
 # Ollamaサーバの設定
 OLLAMA_HOST = "http://192.168.11.27:11434"
-ANALYST_MODEL = "phi3"
-PLANNER_MODEL = "phi3"
+ANALYST_MODEL = "llama3.2"
+PLANNER_MODEL = "llama3.2"
 COMMANDER_MODEL = "phi3"
+
+# ユーザ要求
+INSTRUCTION = "Move 10cm forward avoid objects."
 
 # Ollama クライアントの初期化
 client = Client(host=OLLAMA_HOST)
@@ -81,7 +84,7 @@ def analyst(sensor_data):
     A value of 'Infinity' means no obstacle is detected in that direction.
     {sensor_data}
 
-    Please analyze this data and provide the analysis in **strictly JSON format**. The format should be:
+    Please analyze this data, detect all obstacles and provide the analysis in **strictly JSON format**. The format should be:
 
     {{
         "situation": "<Describe the situation, e.g., '6 Obstacle detected'>",
@@ -95,9 +98,8 @@ def analyst(sensor_data):
     Only respond the JSON object, no code or explanations.
     """
     # print(prompt)
-
-    analysis_content = ollama_chat("analyst", ANALYST_MODEL, prompt)
-    analysis_content = remove_outside_braces(analysis_content)
+    reply = ollama_chat("analyst", ANALYST_MODEL, prompt)
+    analysis_content = remove_outside_braces(reply)
     print(f"解析員のレスポンス内容: {analysis_content}")
 
     if not analysis_content.strip():
@@ -115,12 +117,11 @@ def analyst(sensor_data):
 
 # 経路計画員の処理
 def planner(analysis):
-    instruction = "Move 10cm forward dodge objects."
 
     prompt = f"""
     You are the Path Planner. Based on the following analysis:
     {analysis}
-    The user's instruction is: {instruction}
+    The user's instruction is: {INSTRUCTION}
     Generate movement commands for the robot in JSON format:
     The direction field specifies the direction in which the robot moves. The following values can be set for this field:
     "forward": Specifies that the robot should move forward. In this case, the distance field should specify the distance to move (e.g., "1m").
@@ -139,10 +140,10 @@ def planner(analysis):
     Only respond the JSON object, no code or explanations.
     """
     # print(prompt)
-    control_content = ollama_chat("planner", PLANNER_MODEL, prompt)
-    control_content = remove_outside_braces(control_content)
-    print(control_content)
-    
+    reply = ollama_chat("planner", PLANNER_MODEL, prompt)
+    control_content = remove_outside_braces(reply)
+    print(f"経路計画員のレスポンス内容: {control_content}")
+
     try:
         control = json.loads(control_content)
     except json.JSONDecodeError as e:
@@ -162,13 +163,13 @@ def commander(analysis, control):
     {control}
 
     You have the following options:
-    1. "Proceed": If the analysis and planning are correct.
+    1. "Proceed": If the analysis and path planning are correct.
     2. "Re-run analysis": If you want to request a re-run of the analysis.
-    3. "Re-run planning": If you want to request a re-run of the path planning.
+    3. "Re-run path planning": If you want to request a re-run of the path planning.
 
     Please provide your decision as a response, in the following format:
     {{
-        "decision": "<Proceed | Re-run analysis | Re-run planning>",
+        "decision": "<Proceed | Re-run analysis | Re-run path planning>",
         "reason": "<Explanation for the decision>"
     }}
 
@@ -176,19 +177,20 @@ def commander(analysis, control):
     """
 
     # 司令員のレスポンスを取得
-    commander_content = ollama_chat("commander", COMMANDER_MODEL, prompt)
-    commander_content = remove_outside_braces(commander_content)
+    # print(prompt)
+    reply = ollama_chat("commander", COMMANDER_MODEL, prompt)
+    commander_content = remove_outside_braces(reply)
     print(f"司令員のレスポンス内容: {commander_content}")
 
     if not commander_content.strip():
         print("司令員の応答が空です。")
-        return {"decision": "Proceed", "reason": "No issues detected."}
+        return {"decision": "Re-Run analysis", "reason": "No issues detected."}
 
     try:
         commander_decision = json.loads(commander_content)
     except json.JSONDecodeError as e:
         print(f"JSONデコードエラー: {e}")
-        commander_decision = {"decision": "Proceed", "reason": "Invalid response"}
+        commander_decision = {"decision": "Re-Run analysis", "reason": "Invalid response"}
     
     return commander_decision
 
@@ -237,7 +239,7 @@ def main():
 
             continue  # 解析を再実行するためにループを続ける
 
-        elif commander_decision["decision"] == "Re-run planning":
+        elif commander_decision["decision"] == "Re-run path planning" :
             print("経路計画を再実行します...")
             # 経路計画を再実行
             control = planner(analysis)
@@ -249,6 +251,14 @@ def main():
             print(f"司令員の決定: {commander_decision}")
 
             continue  # 計画を再実行するためにループを続ける
+
+        else:
+            # 司令員の処理
+            commander_decision = commander(analysis, control)
+            print(f"司令員の決定: {commander_decision}")
+
+            continue  # 計画を再実行するためにループを続ける
+
 
 if __name__ == "__main__":
     main()

@@ -3,18 +3,6 @@
         {
             "direction": "forward",
             "distance": "10cm"
-        },
-        {
-            "direction": "right",
-            "angle": "45"
-        },
-        {
-            "direction": "backward",
-            "distance": "6cm"
-        },
-        {
-            "direction": "left",
-            "angle": "90"
         }
     ]
 }
