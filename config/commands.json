@@ -1,0 +1,11 @@
+{
+    "commands": [
+        {
+            "direction": "forward",
+            "distance": "10cm"
+        },
+        {
+            "direction": "dodge objects"
+        }
+    ]
+}
