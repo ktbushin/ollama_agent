@@ -1,4 +1,45 @@
 {
-    "situation": "Invalid response",
-    "recommendations": []
+    "situation": "Obstacle movement detected",
+    "obstacles": [
+        {
+            "angle": "294\u00b0",
+            "distance": 0.370961
+        },
+        {
+            "angle": "295\u00b0",
+            "distance": 0.418626
+        },
+        {
+            "angle": "296\u00b0",
+            "distance": 0.410418
+        },
+        {
+            "angle": "297\u00b0",
+            "distance": 0.447907
+        },
+        {
+            "angle": "298\u00b0",
+            "distance": 0.472484
+        },
+        {
+            "angle": "299\u00b0",
+            "distance": 0.498925
+        },
+        {
+            "angle": "300\u00b0",
+            "distance": 0.524362
+        },
+        {
+            "angle": "301\u00b0",
+            "distance": 0.542127
+        },
+        {
+            "angle": "302\u00b0",
+            "distance": 0.588365
+        },
+        {
+            "angle": "303\u00b0",
+            "distance": 0.622839
+        }
+    ]
 }

@@ -186,7 +186,6 @@ def commander(analysis, control):
 
     try:
         commander_decision = json.loads(commander_content)
-        print(f"司令員の決定: {commander_decision}")
     except json.JSONDecodeError as e:
         print(f"JSONデコードエラー: {e}")
         commander_decision = {"decision": "Proceed", "reason": "Invalid response"}
