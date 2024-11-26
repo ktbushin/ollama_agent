@@ -1,0 +1,81 @@
+$ python3 multi_agent_GenAI.py
+センサ値を読み込みました: 360 データポイント
+[analyst - llama3.2] 処理時間: 41.629[sec]
+解析員のレスポンス内容: {
+  "situation": "10 Obstacles detected",
+  "obstacles": [
+    {"angle": 0.166755, "distance": 258},
+    {"angle": 0.168688, "distance": 259},
+    {"angle": 0.172497, "distance": 260},
+    {"angle": 0.175453, "distance": 261},
+    {"angle": 0.174772, "distance": 262},
+    {"angle": 0.168110, "distance": 263},
+    {"angle": 0.195847, "distance": 264},
+    {"angle": 0.183070, "distance": 265},
+    {"angle": 0.197951, "distance": 266},
+    {"angle": 0.206765, "distance": 267},
+    {"angle": 0.198332, "distance": 268},
+    {"angle": 0.201517, "distance": 269},
+    {"angle": 0.224320, "distance": 270},
+    {"angle": 0.201111, "distance": 271},
+    {"angle": 0.213367, "distance": 272},
+    {"angle": 0.226115, "distance": 273},
+    {"angle": 0.220479, "distance": 274},
+    {"angle": 0.224415, "distance": 275},
+    {"angle": 0.227860, "distance": 276},
+    {"angle": 0.238463, "distance": 277},
+    {"angle": 0.238213, "distance": 278},
+    {"angle": 0.244207, "distance": 279},
+    {"angle": 0.250911, "distance": 280},
+    {"angle": 0.264294, "distance": 281},
+    {"angle": 0.257179, "distance": 282},
+    {"angle": 0.285239, "distance": 283},
+    {"angle": 0.284535, "distance": 284},
+    {"angle": 0.278512, "distance": 285},
+    {"angle": 0.305832, "distance": 286},
+    {"angle": 0.283571, "distance": 287},
+    {"angle": 0.322912, "distance": 288},
+    {"angle": 0.314021, "distance": 289},
+    {"angle": 0.333332, "distance": 290},
+    {"angle": 0.330179, "distance": 291},
+    {"angle": 0.353598, "distance": 292},
+    {"angle": 0.369883, "distance": 293},
+    {"angle": 0.370961, "distance": 294},
+    {"angle": 0.418626, "distance": 295},
+    {"angle": 0.410418, "distance": 296},
+    {"angle": 0.447907, "distance": 297},
+    {"angle": 0.472484, "distance": 298},
+    {"angle": 0.498925, "distance": 299},
+    {"angle": 0.524362, "distance": 300},
+    {"angle": 0.542127, "distance": 301},
+    {"angle": 0.588365, "distance": 302},
+    {"angle": 0.622839, "distance": 303},
+    {"angle": 0.700704, "distance": 304},
+    {"angle": 0.712896, "distance": 305},
+    {"angle": 0.771503, "distance": 306},
+    {"angle": 0.869425, "distance": 307},
+    {"angle": 0.955470, "distance": 308},
+    {"angle": 1.075733, "distance": 309},
+    {"angle": 1.225602, "distance": 310},
+    {"angle": 1.424324, "distance": 311},
+    {"angle": 1.697195, "distance": 312},
+    {"angle": 2.119064, "distance": 313},
+    {"angle": 2.828640, "distance": 314},
+    {"angle": 3.150321, "distance": 315},
+    {"angle": 3.130435, "distance": 316},
+    {"angle": 3.120240, "distance": 317},
+    {"angle": 3.112443, "distance": 318},
+    {"angle": 3.128375, "distance": 319},
+    {"angle": 3.127470, "distance": 320},
+    {"angle": Infinity, "distance": 321}
+  ]
+}
+解析結果: {'situation': '10 Obstacles detected', 'obstacles': [{'angle': 0.166755, 'distance': 258}, {'angle': 0.168688, 'distance': 259}, {'angle': 0.172497, 'distance': 260}, {'angle': 0.175453, 'distance': 261}, {'angle': 0.174772, 'distance': 262}, {'angle': 0.16811, 'distance': 263}, {'angle': 0.195847, 'distance': 264}, {'angle': 0.18307, 'distance': 265}, {'angle': 0.197951, 'distance': 266}, {'angle': 0.206765, 'distance': 267}, {'angle': 0.198332, 'distance': 268}, {'angle': 0.201517, 'distance': 269}, {'angle': 0.22432, 'distance': 270}, {'angle': 0.201111, 'distance': 271}, {'angle': 0.213367, 'distance': 272}, {'angle': 0.226115, 'distance': 273}, {'angle': 0.220479, 'distance': 274}, {'angle': 0.224415, 'distance': 275}, {'angle': 0.22786, 'distance': 276}, {'angle': 0.238463, 'distance': 277}, {'angle': 0.238213, 'distance': 278}, {'angle': 0.244207, 'distance': 279}, {'angle': 0.250911, 'distance': 280}, {'angle': 0.264294, 'distance': 281}, {'angle': 0.257179, 'distance': 282}, {'angle': 0.285239, 'distance': 283}, {'angle': 0.284535, 'distance': 284}, {'angle': 0.278512, 'distance': 285}, {'angle': 0.305832, 'distance': 286}, {'angle': 0.283571, 'distance': 287}, {'angle': 0.322912, 'distance': 288}, {'angle': 0.314021, 'distance': 289}, {'angle': 0.333332, 'distance': 290}, {'angle': 0.330179, 'distance': 291}, {'angle': 0.353598, 'distance': 292}, {'angle': 0.369883, 'distance': 293}, {'angle': 0.370961, 'distance': 294}, {'angle': 0.418626, 'distance': 295}, {'angle': 0.410418, 'distance': 296}, {'angle': 0.447907, 'distance': 297}, {'angle': 0.472484, 'distance': 298}, {'angle': 0.498925, 'distance': 299}, {'angle': 0.524362, 'distance': 300}, {'angle': 0.542127, 'distance': 301}, {'angle': 0.588365, 'distance': 302}, {'angle': 0.622839, 'distance': 303}, {'angle': 0.700704, 'distance': 304}, {'angle': 0.712896, 'distance': 305}, {'angle': 0.771503, 'distance': 306}, {'angle': 0.869425, 'distance': 307}, {'angle': 0.95547, 'distance': 308}, {'angle': 1.075733, 'distance': 309}, {'angle': 1.225602, 'distance': 310}, {'angle': 1.424324, 'distance': 311}, {'angle': 1.697195, 'distance': 312}, {'angle': 2.119064, 'distance': 313}, {'angle': 2.82864, 'distance': 314}, {'angle': 3.150321, 'distance': 315}, {'angle': 3.130435, 'distance': 316}, {'angle': 3.12024, 'distance': 317}, {'angle': 3.112443, 'distance': 318}, {'angle': 3.128375, 'distance': 319}, {'angle': 3.12747, 'distance': 320}, {'angle': inf, 'distance': 321}]}
+解析結果が config/analysis.json に保存されました。
+[planner - llama3.2] 処理時間: 3.602[sec]
+経路計画員のレスポンス内容: {
+  "commands": [
+    {"direction": "forward", "distance": "10cm"},
+    {"direction": "right", "angle": "0.166755"}
+  ]}
+指令が config/commands.json に保存されました。

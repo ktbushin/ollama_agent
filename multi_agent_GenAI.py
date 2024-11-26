@@ -5,8 +5,8 @@ import math
 
 # Ollamaサーバの設定
 OLLAMA_HOST = "http://192.168.11.27:11434"
-ANALYST_MODEL = "llama3.2"
-PLANNER_MODEL = "llama3.2"
+ANALYST_MODEL = "phi3"
+PLANNER_MODEL = "phi3"
 COMMANDER_MODEL = "phi3"
 
 # ユーザ要求

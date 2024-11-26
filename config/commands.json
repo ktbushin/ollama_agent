@@ -2,7 +2,11 @@
     "commands": [
         {
             "direction": "forward",
-            "distance": "10cm"
+            "distance": "1m"
+        },
+        {
+            "direction": "left",
+            "angle": "30"
         }
     ]
 }
